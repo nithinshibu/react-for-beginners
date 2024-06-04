@@ -3,18 +3,19 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <User />
+      <User name="Nithin" age={25} email="nithin@gmail.com" />
+      <User name="Jack" age={21} email="jack-sparrow@gmail.com" />
     </div>
   );
 }
 
 //this is a react component
-const User = () => {
+const User = (props) => {
   return (
     <div>
-      <h1>Nithin</h1>
-      <h2>25</h2>
-      <h3>nithin@gmail.com</h3>
+      <h1>{props.name}</h1>
+      <h2>{props.age}</h2>
+      <h3>{props.email}</h3>
     </div>
   );
 };
