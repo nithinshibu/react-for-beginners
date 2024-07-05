@@ -40,3 +40,14 @@
 .name {
   color: red;
 }
+
+.task-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin-left: 11px;
+  color: red;
+}

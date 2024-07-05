@@ -1,20 +1,40 @@
 import "./App.css";
-import { Planets } from "./Planets";
+import { useState } from "react";
 
 function App() {
-  const planets = [
-    { name: "Mars", isGasPlanet: false },
-    { name: "Earth", isGasPlanet: false },
-    { name: "Jupiter", isGasPlanet: true },
-    { name: "Venus", isGasPlanet: false },
-    { name: "Neptune", isGasPlanet: true },
-    { name: "Uranus", isGasPlanet: true },
-  ];
+  const [todoList, setTodoList] = useState([]);
+  const [newTask, setNewTask] = useState("");
+
+  const handleChange = (e) => {
+    setNewTask(e.target.value);
+  };
+
+  const addTask = () => {
+    setTodoList([...todoList, newTask]);
+  };
+
+  const deleteTask = (task) => {
+    setTodoList(todoList.filter((item) => item !== task));
+  };
+
   return (
     <div className="App">
-      {planets.map((planet, key) => {
-        return <Planets name={planet.name} isGasPlanet={planet.isGasPlanet} />;
-      })}
+      <div className="addTask">
+        <input onChange={handleChange} />
+        <button onClick={addTask}>Add Task</button>
+      </div>
+      <div className="list">
+        {todoList.map((task) => {
+          return (
+            <div className="task-btn-container">
+              <h1>{task}</h1>
+              <button className="btn" onClick={() => deleteTask(task)}>
+                X
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
