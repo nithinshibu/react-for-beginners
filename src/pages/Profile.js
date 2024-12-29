@@ -1,11 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { ChangeProfile } from "../components/ChangeProfile";
 
-export const Profile = () => {
-  let { username } = useParams();
+export const Profile = (props) => {
   return (
     <div>
-      <h1>This is the Profile Page for the user {username}</h1>
+      <div>PROFILE,user is : {props.username}</div>
+      <ChangeProfile setUserName={props.setUserName} />
     </div>
   );
 };
